@@ -149,3 +149,6 @@ LOGOUT_REDIRECT_URL = 'list'   # Чыккандан кийин 'list' бараг
 # бул саптар сүрөттөр туура көрүнүшү үчүн керек:
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+ALLOWED_HOSTS = ['rai-books.onrender.com', 'localhost', '127.0.0.1']
+DEBUG = False 
