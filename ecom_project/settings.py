@@ -154,3 +154,5 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 ALLOWED_HOSTS = ['rai-books.onrender.com', 'localhost', '127.0.0.1']
 DEBUG = False 
 
+WHITENOISE_USE_FINDERS = True
+

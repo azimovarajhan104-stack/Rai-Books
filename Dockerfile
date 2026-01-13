@@ -15,5 +15,7 @@ RUN pip3 install -r requirements.txt
 
 # 6. Долбоорду көчүрүү: Компьютердеги бардык коддорду контейнердин ичине көчүрөбүз
 COPY . .
-  
+   
+RUN python manage.py collectstatic --noinput
+
 CMD ["gunicorn", "ecom_project.wsgi:application", "--bind", "0.0.0.0:10000"]
