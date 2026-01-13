@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+<br>
+<div class="card mb-3" style="max-width: 840px;">
+    <div class="row no-gutters">
+      <div class="col-md-4">
+        <img src="{{ object.image_url }}" class="card-img">
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h4 class="card-title">{{ object.title }}</h4>
+          <p class="card-text">Автору: {{ object.author }}</p><hr>
+          <p class="card-text">{{ object.description }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<p>
+  <a href="https://wa.me/996500005585?text=Саламатсызбы!%20Мага%20сиздин%20«{{ object.title }}»%20аттуу%20китебиңиз%20жакты.%20Кененирээк%20маалымат%20ала%20аламбы?">
+    Авторго жазылуу
+  </a>
+</p><p>Баасы: {{ object.price|floatformat:2 }} сом</p>
+
+{% if object.book_available is True %}
+<a href="{% url 'checkout' object.pk %}" class="btn btn-outline-success" role="button">Азыр сатып алуу</a>
+{% else %}
+<h4 class="text-danger">Кампада жок!</h4>
+{% endif %}
+
+{% endblock content %}

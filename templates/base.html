@@ -1,0 +1,59 @@
+{% load static %}
+<!doctype html>
+<html lang="ky">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <title>Онлайн китеп дүкөнү</title>
+</head>
+<body>
+
+    <nav class="navbar navbar-dark bg-dark shadow-sm">
+<a class="navbar-brand" href="{% url 'list' %}" style="font-family: 'Montserrat', sans-serif; font-weight: 700;">Rai Books</a>        
+        <div class="d-flex align-items-center">
+            <div class="btn-group mr-3">
+                <a class="nav-link dropdown-toggle text-white" href="#" data-toggle="dropdown">
+                    {% if user.is_authenticated %}{{ user.username }}{% else %}Конок{% endif %}
+                </a>
+                <div class="dropdown-menu">
+                    {% if user.is_authenticated %}
+                        <a class="dropdown-item" href="{% url 'logout' %}">Чыгуу</a>
+                    {% else %}
+                        <a class="dropdown-item" href="{% url 'login' %}">Кирүү</a>
+                        <a class="dropdown-item" href="{% url 'signup' %}">Катталуу</a>
+                    {% endif %}
+                </div>
+            </div>
+
+            <form class="search" action="{% url 'search_results' %}" method="get">
+                <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+                <i class="fas fa-search"></i>
+                <input name="q" type="text" autocomplete="off" placeholder="Издөө...">
+            </form>
+        </div>
+    </nav>
+
+    <div class="hero-section">
+        <div class="overlay"></div>
+        <div class="container hero-content">
+            <h1 class="quote-text">"Китеп — дүйнөнүн ачкычы, билимдин булагы."</h1>
+            <p class="quote-author">— Чынгыз Айтматов</p>
+        </div>
+    </div>
+
+    <div class="container mt-5">
+        {% block content %}
+        {% endblock content %}
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+</body>
+</html>

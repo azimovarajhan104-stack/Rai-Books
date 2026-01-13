@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    {% if object.book_available is True %}
+    <div class="row">
+        <div class="col-lg-5">
+            <div class="card shadow-sm">
+                <img src="{{ object.image_url }}" class="card-img-top p-2" alt="{{ object.title }}">
+            </div>
+        </div>
+
+        <div class="col-lg-7">
+            <div class="card card-body shadow-sm">
+                <h3 class="font-weight-bold">{{ object.title }}</h3>
+                <p class="text-muted">Автору: {{ object.author }}</p>
+                <hr>
+                <h4 class="text-success">Төлөнүүчү сумма: {{ object.price|floatformat:2 }} сом</h4>
+                <hr>
+
+                <div class="p-3 mb-4" style="background-color: #f8f9fa; border-left: 5px solid #007bff; border-radius: 5px;">
+                    <h5 class="text-primary"><strong>Мбанк аркылуу төлөө:</strong></h5>
+                    <p class="mb-1">Төлөмдү төмөнкү номерге которуңуз:</p>
+                    <h4 class="font-weight-bold">+996 707 20 41 18</h4>
+                    <p class="mb-0 text-secondary"><strong>Алуучу:</strong> (Райхан А)</p>
+                </div>
+
+                <p class="small text-muted">
+                    * Төлөмдү аткаргандан кийин, "Төлөм чегин жөнөтүү" баскычын басып, чектердин скриншотун бизге WhatsApp аркылуу жөнөтүңүз.
+                </p>
+
+                <a href="https://wa.me/996500005585?text=Саламатсызбы!%20Мен%20«{{ object.title }}»%20китебине%20төлөдүм.%20Мына%20төлөм%20чеги:" 
+                   class="btn btn-success btn-lg btn-block shadow">
+                   <i class="fab fa-whatsapp"></i> Төлөм чегин жөнөтүү
+                </a>
+            </div>
+        </div>
+    </div>
+
+    {% else %}
+    <div class="text-center mt-5 p-5 bg-white shadow rounded">
+        <h4 class="text-danger">Кечиресиз, бул китеп кампада жок!</h4>
+        <a href="/" class="btn btn-primary mt-3">Башкы бетке кайтуу</a>
+    </div>
+    {% endif %}
+</div>
+
+<style>
+    body {
+        background-color: #f4f7f6;
+    }
+    .card {
+        border: none;
+        border-radius: 10px;
+    }
+</style>
+{% endblock content %}
