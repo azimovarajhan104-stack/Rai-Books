@@ -25,14 +25,22 @@
                     <p class="mb-0 text-secondary"><strong>Алуучу:</strong> (Райхан А)</p>
                 </div>
 
+                <div class="mb-4">
+                    <h5 class="text-dark font-weight-bold">Жеткирүү маалыматтары:</h5>
+                    <div class="form-group">
+                        <input type="text" id="cust_name" class="form-control mb-2" placeholder="Аты-жөнүңүз" required>
+                        <input type="text" id="cust_phone" class="form-control mb-2" placeholder="Телефон номериңиз" required>
+                        <textarea id="cust_address" class="form-control" placeholder="Жеткирүү дареги (Шаар, көчө, үй)" rows="2" required></textarea>
+                    </div>
+                </div>
+
                 <p class="small text-muted">
-                    * Төлөмдү аткаргандан кийин, "Төлөм чегин жөнөтүү" баскычын басып, чектердин скриншотун бизге WhatsApp аркылуу жөнөтүңүз.
+                    * Төлөмдү аткарып, дарегиңизди жазгандан кийин WhatsApp аркылуу чек менен маалыматты жөнөтүңүз.
                 </p>
 
-                <a href="https://wa.me/996500005585?text=Саламатсызбы!%20Мен%20«{{ object.title }}»%20китебине%20төлөдүм.%20Мына%20төлөм%20чеги:" 
-                   class="btn btn-success btn-lg btn-block shadow">
-                   <i class="fab fa-whatsapp"></i> Төлөм чегин жөнөтүү
-                </a>
+                <button onclick="sendWhatsApp()" class="btn btn-success btn-lg btn-block shadow">
+                    <i class="fab fa-whatsapp"></i> Төлөм чегин жана даректи жөнөтүү
+                </button>
             </div>
         </div>
     </div>
@@ -45,6 +53,37 @@
     {% endif %}
 </div>
 
+<script>
+    function sendWhatsApp() {
+        // Маалыматтарды киргизүү талааларынан алабыз
+        var name = document.getElementById('cust_name').value;
+        var phone = document.getElementById('cust_phone').value;
+        var address = document.getElementById('cust_address').value;
+        var bookTitle = "{{ object.title }}";
+
+        // Эгер талаалар бош болсо эскертүү беребиз
+        if (name == "" || phone == "" || address == "") {
+            alert("Сураныч, жеткирүү маалыматтарын толук толтуруңуз!");
+            return;
+        }
+
+        // Билдирүүнүн текстин түзөбүз
+        var message = "Саламатсызбы! Мен «" + bookTitle + "» китебине төлөдүм.\n\n" +
+                      "📦 *Жеткирүү маалыматтары:* \n" +
+                      "👤 Аты: " + name + "\n" +
+                      "📞 Тел: " + phone + "\n" +
+                      "📍 Дарек: " + address + "\n\n" +
+                      "Мына төлөм чеги:";
+
+        // Текстти шилтемеге айлантабыз
+        var encodedMessage = encodeURIComponent(message);
+        var whatsappUrl = "https://wa.me/996500005585?text=" + encodedMessage;
+
+        // WhatsApp'ка багыттайбыз
+        window.open(whatsappUrl, '_blank');
+    }
+</script>
+
 <style>
     body {
         background-color: #f4f7f6;
@@ -52,6 +91,14 @@
     .card {
         border: none;
         border-radius: 10px;
+    }
+    .form-control {
+        border-radius: 8px;
+        border: 1px solid #ced4da;
+    }
+    .form-control:focus {
+        border-color: #007bff;
+        box-shadow: 0 0 5px rgba(0,123,255,.25);
     }
 </style>
 {% endblock content %}

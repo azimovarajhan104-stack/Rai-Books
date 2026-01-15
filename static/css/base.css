@@ -107,3 +107,27 @@ body {
 .card:hover {
     transform: translateY(-10px);
 }
+.site-footer {
+    background-color: #2c2c2c; /* Кара фон */
+    color: #ffffff;           /* Ак текст */
+    padding: 20px 0;          /* Үстү-астынан боштук */
+    text-align: center;       /* Текстти ортого коюу */
+    font-family: Arial, sans-serif;
+    width: 100%;
+    margin-top: 50px;         /* Контенттен бир аз алыс турушу үчүн */
+}
+
+.site-footer p {
+    margin: 5px 0;            /* Саптардын ортосундагы аралык */
+    font-size: 14px;
+    opacity: 0.9;             /* Текст бир аз жумшак көрүнүшү үчүн */
+}
+
+.site-footer a {
+    color: #ffffff;
+    text-decoration: none;    /* Шилтеменин астындагы сызыкты алып салуу */
+}
+
+.site-footer a:hover {
+    text-decoration: underline; /* Чычканды алып барганда сызык пайда болот */
+}

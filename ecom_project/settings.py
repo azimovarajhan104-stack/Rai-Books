@@ -108,7 +108,6 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
 
-# Бул жерди 'ky' же 'ky-kg' кылып өзгөртүңүз
 LANGUAGE_CODE = 'ky'
 
 # Кыргызстандын убактысына тууралоо (Бишкек убактысы)
